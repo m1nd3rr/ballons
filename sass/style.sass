@@ -1,0 +1,135 @@
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+html
+   font-size: 10px// 1 единица rem будет 10 px 
+
+body
+    font-family: "Roboto",sans-serif
+    font-weight: 800
+    color: #777
+    font-size: 1.6rem
+    letter-spacing: .2rem
+    padding: 5rem
+    background-color: white
+
+
+.container
+    background-color: #F7F7F7
+
+.headder
+   position: relative
+   height: 95vh
+   background: linear-gradient(90deg, rgba(186, 133, 84, 0.70) 0.03%, rgba(1, 1, 1, 0.70) 99.94%), url(../img/headder-background.jpg) center / cover no-repeat
+   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%)
+   &__logo
+    position: absolute
+    top: 5rem
+    left: 5rem
+    height: 7rem
+    width: 5rem
+   &__box
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%,-50%)//при позиционировании абсолют 50% идут от начала текста,при помощи этогог мы сдвигаем по x,y
+      width: 100%
+      text-align: center
+.title-first
+    color: #FFF
+    &__main
+        display: block//span сделали блочным
+        font-size: 5rem
+        font-weight: 80rem
+        letter-spacing: 1rem
+        text-transform: uppercase
+        margin-bottom: 1rem//расстояние между заголовками
+        animation-name: leftToRight//чтобы была анимация
+        animation-duration: 2s//длительность анимации
+        animation-delay: 1s//задержка
+        animation-timing-function: easy//анимация
+        backface-visibility: hidden
+    &__secondary
+        display: block
+        font-weight: 100
+        font-size: 4rem
+        font-weight: 300
+        letter-spacing: .5rem
+        animation-name: RightToLeft
+        animation-duration: 2s
+        animation-delay: 1s//задержка
+        animation-timing-function: easy
+        backface-visibility: hidden
+        margin-bottom: 5rem//отступ
+.btn
+   &:link,&:visited //добаление псевдоклассов
+      text-transform: uppercase//текст печатается большими буквами
+      text-decoration: none//убирает подчеркивание
+      color: #777
+      padding: 1.5rem 4rem
+      background: white
+      border-radius: 5rem//закругление
+      display: inline-block//делаем отдельный блок
+      transition: all .5s//применяет свойства ниже 
+      position: relative
+      font-size: 2rem
+   &:hover
+      transform: translateY(-.5rem)//при наведении поднимается
+      box-shadow: (0rem .4rem .4rem 0rem rgba(0, 0, 0, 0.5))//добавляет тень
+      &::after
+         opacity: 0//прозрачность
+         transform: scaleX(1.5)   scaleY(1.7)//расширяем псевдоэлемент по x
+   &:active
+      transform: translateY(-.2rem)//при нажатии вдавливается
+      box-shadow: (0px .4rem .4rem 0rem rgba(0, 0, 0, 0.2))
+   &::after
+      content: ""
+      background: white
+      width: 100%
+      height: 100%
+      border-radius: 5rem
+      display: inline-block// отображается как строчный элемент
+      position: absolute
+      top: 0
+      left: 0
+      z-index: -1//псевдоэлесент стал за кнопкой
+      transition: all 1s
+   &_animated
+      animation: BtnToUp .5s ease-out .7s// время появления кнопки, скорость, задержка
+      animation-fill-mode: backwards//задержка появления кнопки
+   @keyframes BtnToUp
+     0%
+        opacity: 0//плавное появление
+        transform: translateY(5rem)
+
+     100%
+        opacity: 1
+        transform: translateY(0rem)
+
+      
+      
+@keyframes leftToRight
+     0%
+        opacity: 0//плавное появление
+        transform: translateX(-10rem)
+     80%
+        transform: translateX(2rem)
+
+     100%
+        opacity: 1
+        transform: translateX(0rem)
+
+@keyframes RightToLeft
+     0%
+        opacity: 0//плавное появление
+        transform: translateX(10rem)
+     80%
+        transform: translateX(-1rem)
+
+     100%
+        opacity: 1
+        transform: translateX(0rem)
+      
+        
